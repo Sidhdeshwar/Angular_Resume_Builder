@@ -10,3 +10,7 @@ input{
   border-right: 15px solid rgb(0, 89, 255);
   background-color: rgb(231, 226, 219);
 }
+.inputHeight
+{
+  height: 15px;
+}
