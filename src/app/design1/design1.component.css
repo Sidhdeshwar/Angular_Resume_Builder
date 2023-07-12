@@ -4,7 +4,7 @@
 input{
   border-radius: 0px;
 }
-.borderLeft
+.borderLeft-Right
 {
   border-left: 15px solid rgb(0, 89, 255);
   border-right: 15px solid rgb(0, 89, 255);
