@@ -1,11 +1,17 @@
-<div class="container mt-5 border border-dark border-2">
-  <form action="">
+ <div class="text-center fs-3"><b>RESUME BUILDER</b></div>
+<div class="container  border border-dark border-2">
+  <form  [formGroup]="resumeForm">
     <div class="m-2">
       <!-- ? Heading -->
         <div class="row fentBlue">
           <div class="col-md-8 mt-3 mb-5">
-            <input type="text" class="form-control form-control-lg m-2 w-75" [placeholder]="'Enter Your Full Name'" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <input type="text" class="form-control form-control-sm m-2 w-50" [placeholder]="'Enter Your Role'" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" class="form-control form-control-lg m-2 w-75" [placeholder]="'Enter Your Full Name'" formControlName="fullName" >
+            <div  formArrayName="degree">
+              <div class="d-flex" *ngFor="let o of resumeForm.get('degree')?.value; let i = index " >
+                <input type="text" class="form-control form-control-sm mx-2 w-50" [placeholder]="'Enter Your Degree'" [formControlName]="i"  > <b class="text-danger mt-2" (click)="deleteDegree()">X</b>
+              </div>
+            </div>
+
           </div>
           <div class="row col-md-4 text-center  my-2">
                  <div class="col-md-4"></div>
@@ -22,7 +28,7 @@
           <div class="col-md-9 mt-2 mb-2">
             <b>ABOUT ME</b>
             <hr class="border-2">
-            <textarea  name="" id="" cols="30" rows="4" class="form-control w-100"></textarea>
+            <textarea  name="" id="" cols="30" rows="4" class="form-control w-100" formControlName="aboutMe"></textarea>
           </div>
           <div class="col-md-3 text-center my-2 fentBlue">
             <!-- & Phone -->
@@ -33,7 +39,10 @@
                 </svg>
                </div>
                <div class="col-md-9">
-                   <input type="number" class="form-control">
+                <div class="input-group">
+                  <span class="input-group-text rounded-0" id="basic-addon1">+91-</span>
+                  <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
                </div>
             </div>
              <!-- & Email -->
@@ -45,7 +54,7 @@
                 </svg>
                </div>
                <div class="col-md-9">
-                   <input type="email" class="form-control">
+                   <input type="email" class="form-control" formControlName="email" placeholder="example@gmail.com">
                </div>
             </div>
                  <!-- & Address -->
@@ -56,7 +65,7 @@
                     </svg>
                    </div>
                    <div class="col-md-9">
-                      <textarea name="" id="" cols="30" rows="2" class="form-control form-control-sm"></textarea>
+                      <textarea name="" id="" cols="30" rows="2" class="form-control form-control-sm" formControlName="address"></textarea>
                    </div>
                 </div>
           </div>
@@ -79,25 +88,25 @@
                 <div class="col-md-11 mt-2 mb-2">
                   <div class="d-flex justify-content-between">
                     <b class="text-primary">EDUCATION</b>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus-circle-dotted me-3 " viewBox="0 0 16 16" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus-circle-dotted me-3 " viewBox="0 0 16 16" (click)="addEducation()" >
                       <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                     </svg>
                   </div>
 
                   <hr class="border-2">
-                 <div class="row m-1">
-                      <div class="col-md-6" *ngFor="let o of [1,2,3,4]">
+                 <div class="row m-1" formArrayName="education">
+                      <div class="col-md-6" *ngFor="let o of resumeForm.get('education')?.value ; let i=index" [formGroupName]="i">
                         <!-- ^ 10 th -->
                         <div class="border p-2 mb-2" >
                           <div class="toast-header p-1 fentBlue">
-                            <strong class="me-auto d-flex">10th Std <input type="text" class="w-25 ms-2 mt-1 form-control font-control-sm inputHeight" placeholder="MM/YYYY"> </strong>
+                            <strong class="me-auto d-flex"> <input type="text" class="w-25 form-control" formControlName="std"> <input type="text" class="w-25 ms-2 mt-1 form-control font-control-sm inputHeight" placeholder="MM/YYYY" formControlName="passYear"> </strong>
                             <!-- <small>11 mins ago</small> -->
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" (click)="removeEducation(i)"></button>
                           </div>
                           <div class="toast-body">
-                            <input type="text" class="form-control form-control-sm my-2" [placeholder]="'School/Collage Name'" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" class="form-control form-control-sm my-2" [placeholder]="'School/Collage Name'" formControlName="collegeName">
                             <div class="d-flex">
-                              <i>Percentage/Grade : </i> <input type="text" class="form-control form-control-sm ms-2 w-25" [placeholder]="'%'" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <i>Percentage/Grade : </i> <input type="text" class="form-control form-control-sm ms-2 w-25" [placeholder]="'%'" formControlName="percentage">
                             </div>
                           </div>
                         </div>
@@ -119,27 +128,26 @@
                                 <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708ZM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z"/>
                               </svg>
                             </div>
-
-
                             </div>
                             <div class="col-md-11 mt-2 mb-2">
                               <div class="d-flex justify-content-between">
                                 <b class="text-primary">SKILL'S</b>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus-circle-dotted me-3 " viewBox="0 0 16 16" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus-circle-dotted me-3 " viewBox="0 0 16 16" (click)="addSkills()" >
                                   <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                                 </svg>
                               </div>
 
                               <hr class="border-2">
-                             <div class="row m-1">
-                                  <div class="col-md-3" *ngFor="let o of [1,2,3] ; let i=index">
-                                    <!-- ^ 10 th -->
+                             <div class="row m-1" formArrayName="skills" *ngFor="let ob of resumeForm.get('skills')?.value ; let i=index" [formGroupName]="i">
+                                  <div class="col-md-3" >
+                                    <!-- ^ Skill -1 -->
                                     <div class="border p-2 mb-2" >
-                                      <div class="toast-header p-1 fentBlue">
-                                        <strong class="me-auto d-flex">
-                                          <input type="text" class="form-control form-control-sm my-2" placeholder="Skill-{{i+1}}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                      <div class="toast-header p-1 fentBlue" >
+                                        <strong class="me-auto d-flex" >
+
+                                          <input type="text" class="form-control form-control-sm my-2" placeholder="Skill-{{i+1}}" formControlName="skillName">
                                           <!-- Example split danger button -->
-                                          <select name="" id="" class="mt-2 mx-2" style="height: 25px;">
+                                          <select name="" id="" class="mt-2 mx-2" style="height: 25px;" formControlName="percentage">
                                             <option value="0">%</option>
                                             <option value="50">50%</option>
                                             <option value="60">60%</option>
