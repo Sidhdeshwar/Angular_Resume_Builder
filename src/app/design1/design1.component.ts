@@ -8,7 +8,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class Design1Component {
 
-  resumeForm!:FormGroup
+  resumeForm!:FormGroup;
+  addBigDetails:string = '';
   constructor(private formBuilder:FormBuilder)
   {
        this.resumeForm = formBuilder.group({
@@ -42,9 +43,17 @@ export class Design1Component {
          skills: formBuilder.array([
           formBuilder.group({
              skillName: ['SKL'],
-             percentage:[99]
+             percentage:[75]
           })
-         ])
+         ]),
+         hobbies: formBuilder.array([
+            new FormControl('A'),
+            new FormControl('B'),
+            new FormControl('C'),
+         ]),
+         awards: formBuilder.array([
+          new FormControl('Award'),
+       ])
        })
   }
 
@@ -63,6 +72,8 @@ export class Design1Component {
       percentage: ['']
      });
      (this.resumeForm.get('education') as FormArray)?.push(edu);
+     console.log(this.resumeForm);
+     
   }
   removeEducation(id:any)
   {
@@ -74,9 +85,54 @@ export class Design1Component {
   {
      let skill = this.formBuilder.group({
       skillName: [''],
-      percentage:[99]
+      percentage:[50]
    });
-    (this.resumeForm.get('skills')?.value as FormArray).push(skill);
+    (this.resumeForm.get('skills') as FormArray).push(skill);
   }
+  removeSkills(id:any)
+  {
+    (this.resumeForm.get(`skills`) as FormArray)?.removeAt(id);
+  }
+
+  // * Project Details / More
+
+  addProjectORMORE()
+  {
+    let size = 0;
+    for(let obj in this.resumeForm.controls)
+    {
+      size++;
+    }
+    (this.resumeForm.addControl( `demo${size}` , this.formBuilder.array([
+      this.formBuilder.group({
+        title: ['Weeding Machine'],
+        tools:['Autocad'],
+        description:['This is Very Simple Project']
+      }),
+    ]) ));
+   console.log("Z ",this.resumeForm.value);
+   
+  }
+
+  // ?????????????? 1) INTEREST/HOBBIES ???????????????????
+addHobbies()
+{
+  (this.resumeForm.get('hobbies') as FormArray ).push(new FormControl('New'));
+}
+removeHobbies(i:number)
+{
+  (this.resumeForm.get('hobbies') as FormArray ).removeAt(i);
+}
+
+  // ?????????????? 1) Awards/Achievements ???????????????????
+  addAwards()
+  {
+    (this.resumeForm.get('awards') as FormArray ).push(new FormControl('New'));
+  }
+  removeAwards(i:number)
+  {
+    (this.resumeForm.get('awards') as FormArray ).removeAt(i);
+  }
+
 
 }
