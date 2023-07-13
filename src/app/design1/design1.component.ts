@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+declare var require: any;
+
 
 @Component({
   selector: 'app-design1',
@@ -16,7 +18,7 @@ export class Design1Component {
         fullName : ['L F M'],
         degree : formBuilder.array([ new FormControl() ]),
         aboutMe : ['About Me'],
-        phoneNumber : ['Phone Number'],
+        phoneNumber : [0, Validators.maxLength(10)],
         email : [''],
         address : ['Address'],
         // Education
@@ -42,18 +44,42 @@ export class Design1Component {
         ]),
          skills: formBuilder.array([
           formBuilder.group({
-             skillName: ['SKL'],
+             skillName: ['SKL',Validators.required],
              percentage:[75]
           })
          ]),
          hobbies: formBuilder.array([
-            new FormControl('A'),
-            new FormControl('B'),
-            new FormControl('C'),
+            new FormControl(''),
+            new FormControl(''),
+            new FormControl(''),
          ]),
          awards: formBuilder.array([
-          new FormControl('Award'),
-       ])
+          new FormControl(''),
+       ]),
+        languages: formBuilder.array([
+          formBuilder.group({
+              L1: [''],
+              Read: [true],
+              Write:[false],
+              Speak:[false]
+          })
+        ]),
+        projects: formBuilder.array([
+          formBuilder.group({
+            projectTitle: ['Weeding Machine'],
+            usedTools:['Autocad'],
+            projectDescription:['This is Very Simple Project']
+          }),
+        ]),
+        experience: formBuilder.array([
+          formBuilder.group({
+            position: ['Jr.Software Developer'],
+            companyName: ['Angular Minds Pvt Ltd'],
+            years: ['2023-2025'],
+            companyLocation:['Pune'],
+            companyDetails:['Best Company Ever']
+          })
+        ])
        })
   }
 
@@ -62,7 +88,11 @@ export class Design1Component {
     (this.resumeForm.get('degree') as FormArray).removeAt(0);
   }
 
-  // * EDUCATION
+  // ******************* EDUCATION **********************************
+  get education()
+  {
+    return (this.resumeForm.get('education') as FormArray);
+  }
   addEducation()
   {
     let edu = this.formBuilder.group({
@@ -71,68 +101,143 @@ export class Design1Component {
       collegeName: [''],
       percentage: ['']
      });
-     (this.resumeForm.get('education') as FormArray)?.push(edu);
+    this.education.push(edu);
      console.log(this.resumeForm);
-     
+
   }
   removeEducation(id:any)
   {
-    (this.resumeForm.get('education') as FormArray)?.removeAt(id);
+    this.education.removeAt(id);
   }
 
-  // * SKILL's
+
+  // ***************** SKILL's *****************************************
+  get skills()
+  {
+    return (this.resumeForm.get('skills') as FormArray);
+  }
   addSkills()
   {
      let skill = this.formBuilder.group({
       skillName: [''],
       percentage:[50]
    });
-    (this.resumeForm.get('skills') as FormArray).push(skill);
+    this.skills.push(skill);
   }
   removeSkills(id:any)
   {
-    (this.resumeForm.get(`skills`) as FormArray)?.removeAt(id);
+    this.skills.removeAt(id);
   }
 
-  // * Project Details / More
+  // ************************** Project Details / More ****************************
+
+  get projects()
+  {
+    return (this.resumeForm.get(`projects`) as FormArray)
+  }
 
   addProjectORMORE()
   {
-    let size = 0;
-    for(let obj in this.resumeForm.controls)
-    {
-      size++;
-    }
-    (this.resumeForm.addControl( `demo${size}` , this.formBuilder.array([
-      this.formBuilder.group({
-        title: ['Weeding Machine'],
-        tools:['Autocad'],
-        description:['This is Very Simple Project']
-      }),
-    ]) ));
-   console.log("Z ",this.resumeForm.value);
-   
+     let newProject = this.formBuilder.group({
+      projectTitle: ['Weeding Machine'],
+      usedTools:['Autocad'],
+      projectDescription:['This is Very Simple Project']
+    });
+   this.projects.push(newProject);
   }
 
+  removeProject(i:number)
+  {
+    this.projects.removeAt(i);
+    if(this.projects?.controls?.length==0)
+    {
+       this.resumeForm.removeControl('projects');
+       console.log("REm Control : ", this.resumeForm.value);
+    }
+  }
+
+  // ^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Work Experience ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  get experience()
+  {
+    return (this.resumeForm.get('experience') as FormArray)
+  }
+
+  addExperience()
+  {
+    let exp = this.formBuilder.group({
+      position: ['Jr.Software Developer'],
+      companyName: ['Angular Minds Pvt Ltd'],
+      years: ['2023-2025'],
+      companyLocation:['Mumbai'],
+      companyDetails:['Best Company Ever']
+    })
+    this.experience.push(exp);
+  }
+
+  removeExperience(i:number)
+  {
+    this.experience.removeAt(i);
+    if(this.experience?.controls?.length==0)
+    {
+       this.resumeForm.removeControl('experience');
+       console.log("REm EXP : ", this.resumeForm.value);
+    }
+  }
+    // ^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Work Experience ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
   // ?????????????? 1) INTEREST/HOBBIES ???????????????????
+  get hobbies()
+  {
+     return (this.resumeForm.get('hobbies') as FormArray);
+  }
 addHobbies()
 {
-  (this.resumeForm.get('hobbies') as FormArray ).push(new FormControl('New'));
+  this.hobbies.push(new FormControl(''));
 }
 removeHobbies(i:number)
 {
-  (this.resumeForm.get('hobbies') as FormArray ).removeAt(i);
+  this.hobbies.removeAt(i);
 }
 
   // ?????????????? 1) Awards/Achievements ???????????????????
+  get awards()
+  {
+    return (this.resumeForm.get('awards') as FormArray);
+  }
   addAwards()
   {
-    (this.resumeForm.get('awards') as FormArray ).push(new FormControl('New'));
+    this.awards.push(new FormControl(''));
   }
   removeAwards(i:number)
   {
-    (this.resumeForm.get('awards') as FormArray ).removeAt(i);
+    this.awards.removeAt(i);
+  }
+  // ?????????????? 3) Awards/Achievements ???????????????????
+  get languages()
+  {
+    return (this.resumeForm.get('languages') as FormArray);
+  }
+  addLangulages()
+  {
+     let lang = this.formBuilder.group({
+      L1: [''],
+      Read: [true],
+      Write:[false],
+      Speak:[false]
+  })
+    this.languages.push(lang);
+  }
+  removeLanguages(i:number)
+  {
+    this.languages.removeAt(i);
   }
 
+  //^^^^^^^^^^^^^^^^^ PRINT ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  innerText:any;
+  print()
+  {
+      this.innerText = document.getElementById('formPdf')?.innerText;
+        console.log("HTML : ", document.getElementById('formPdf')?.innerHTML)
+  }
 
 }
