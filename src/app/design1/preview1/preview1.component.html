@@ -105,18 +105,11 @@
 
                           </div>
                           <div class="">
-                            <p class="mb-0">{{resumeForm.get('education')?.value[i].collegeName | uppercase}}</p>
+                            <p class="mb-0">{{resumeForm.get('education')?.value[i].collegeName | uppercase}} </p>
                             <i>Percentage/Grade : {{resumeForm.get('education')?.value[i].percentage}} </i>
                           </div>
                         </div>
                       </div>
-                            <!-- * ADD Button -->
-                            <div class="col-md-6  d-flex justify-content-center align-items-center">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus-circle-dotted me-3 " viewBox="0 0 16 16"  >
-                                <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                              </svg>
-                             </div>
-                               <!-- * ADD Button -->
                  </div>
                 </div>
 
@@ -135,34 +128,16 @@
                             </div>
                             </div>
                             <div class="col-md-11 mt-2 mb-2">
-                              <div class="d-flex justify-content-between">
-                                <b class="text-primary">SKILL'S</b>
-
+                              <div class="border-bottom border-2 pb-1  border-secondary">
+                                <b class="text-primary" >SKILL'S</b>
                               </div>
-
-                              <hr class="border-2">
                              <div class=" m-1" formArrayName="skills" >
                               <div class="row">
-                                  <div class="col-md-3"  *ngFor="let ob of skills.controls; let i=index" [formGroupName]="i">
+                                  <div class="col-md-2"  *ngFor="let ob of skills.controls; let i=index" [formGroupName]="i">
                                     <!-- ^ Skill -1 -->
-                                    <div class="border p-2 mb-2" >
-                                      <div class="toast-header p-1 fentBlue" >
-                                        <strong class="me-auto d-flex" >
-
-                                          <input type="text" class="form-control form-control-sm my-2" placeholder="Skill-{{i+1}}" formControlName="skillName">
-                                          <!-- Example split danger button -->
-                                          <select name="" id="" class="mt-2 mx-2" style="height: 25px;" formControlName="percentage" >
-                                            <option value="40">40%</option>
-                                            <option value="50">50%</option>
-                                            <option value="60">60%</option>
-                                            <option value="70">70%</option>
-                                            <option value="80">80%</option>
-                                            <option value="90">90%</option>
-                                            <option value="100">100%</option>
-                                          </select>
-                                        </strong>
-                                        <!-- <small>11 mins ago</small> -->
-                                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    <div class=" p-2 mb-2" >
+                                      <div class="toast-header p-1 STD-BG" >
+                                        <b class="ms-1">{{resumeForm.get('skills')?.value[i].skillName}}</b>
                                       </div>
                                       <div class="toast-body mt-2">
                                         <div class="progress border border-dark" role="progressbar" aria-label="Example with label" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
@@ -171,13 +146,6 @@
                                       </div>
                                     </div>
                                  </div>
-                                 <!-- * ADD Button -->
-                                 <div class="col-md-3  d-flex justify-content-center align-items-center">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus-circle-dotted me-3 " viewBox="0 0 16 16">
-                                    <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                  </svg>
-                                 </div>
-                                   <!-- * ADD Button -->
                                   </div>
                                   <div class="col-md-6"></div>
                              </div>
@@ -190,35 +158,23 @@
                              <div class=" my-2 " *ngIf="projects?.controls" >
 
                               <div class=" mt-2 mb-2" >
-                                <div class="d-flex justify-content-between">
-                                  <b class="text-dark">  PROJECT DETAIL'S</b>
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus-circle-dotted me-3 " viewBox="0 0 16 16"  >
-                                    <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                  </svg>
+                                <div class="border-bottom border-2 pb-1  border-secondary">
+                                  <b >PROJECT DETAIL'S</b>
                                 </div>
-                                <hr class="border-2">
+                                
                                 <div class=" mt-2" formArrayName="projects" >
                                   <div class=" mb-3" *ngFor="let o of projects?.controls ; let i=index" [formGroupName]="i">
                                     <div class="d-flex ">
-                                      <div class="w-100">
-                                        <div class="form-floating mb-3">
-                                          <input type="email" class="form-control form-control-sm m-2 w-50" id="floatingInput" [placeholder]="'Project Name'" formControlName="projectTitle">
-                                            <label for="floatingInput">Project Name - [{{i+1}}]</label>
+                                      <div class="w-100 ms-3">
+                                        <div class="form-floating ">
+                                          <b >{{resumeForm.get('projects')?.value[i].projectTitle}}</b>
+                                        </div>
+                                          <div class="form-floating">
+                                            <i >{{resumeForm.get('projects')?.value[i].usedTools}}</i>
                                           </div>
-                                          <div class="form-floating mb-3">
-                                            <input type="text" class="form-control form-control-sm m-2 w-25" id="floatingInput" [placeholder]="'Used Tools'" formControlName="usedTools">
-                                            <label for="floatingInput">Used Tools</label>
+                                          <div class="form-floating">
+                                            <p >{{resumeForm.get('projects')?.value[i].projectDescription}}</p>
                                           </div>
-                                          <div class="form-floating ms-2">
-                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" placeholder="Enter Project Description" formControlName="projectDescription"></textarea>
-                                            <label for="floatingTextarea">Enter Project Description</label>
-                                          </div>
-                                      </div>
-
-                                      <div class="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-x-circle-fill cursorPointer" viewBox="0 0 16 16" >
-                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                                      </svg>
                                       </div>
                                     </div>
 
@@ -231,69 +187,48 @@
                             </div>
                              <!-- *Project Details -->
         <!-- ^ Work Experience -->
-        <div class=" my-2 " *ngIf="experience?.controls" >
+        <div class=" " *ngIf="experience?.controls" >
 
-          <div class=" mt-2 mb-2" >
-            <div class="d-flex justify-content-between">
-              <b class="text-dark">  WORK EXPERIENCE </b>
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle-dotted me-3 " viewBox="0 0 16 16"  >
-                <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-              </svg>
+          <div class=" mb-2" >
+            <div class="border-bottom border-2 pb-1  border-secondary">
+              <b >WORK EXPERIENCE </b>
             </div>
-            <hr class="border-2">
             <div class="mt-2" formArrayName="experience" >
               <div class=" mb-3" *ngFor="let o of experience?.controls ; let i=index" [formGroupName]="i">
                 <div class="d-flex">
-                  <div class="w-100">
-                    <div class="form-floating mb-3">
-                      <input type="email" class="form-control form-control-sm m-2 w-75" id="floatingInput" [placeholder]="'Enter Your Position'" formControlName="position">
-                        <label for="floatingInput">Enter Your Position</label>
-                      </div>
+                  <div class="w-100 ms-3">
+                    <div class="form-floating ">
+                      <b >{{resumeForm.get('experience')?.value[i].position}}</b>
+                    </div>
                       <!--&  Flex - Company - Date - Location -->
-                      <div class="d-flex justify-content-between">
-                         <div class="">
+                      <div class="row">
+                        <div class="col-md-6"> <i >{{resumeForm.get('experience')?.value[i].companyName}}</i></div>
+                        <div class="col-md-3 d-flex">   
+                          <span class=" rounded-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
+                            <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+                          </svg>
+                        </span>
+                        <div class="form-floating ms-2">
+                          <i >{{resumeForm.get('experience')?.value[i].years}}</i>
+                        </div></div>
+                        <div class="col-md-3 d-flex">
+                          <span class=" rounded-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                              <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                          </span>
                           <div class="form-floating ms-2">
-                            <input type="text" class="form-control form-control-sm  w-100" id="floatingInput" [placeholder]="'Company Name'" formControlName="companyName">
-                            <label for="floatingInput">Company Name - [{{i+1}}]</label>
+                            <i >{{resumeForm.get('experience')?.value[i].companyLocation}}</i>
                           </div>
-                         </div>
-                         <div class="d-flex">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text rounded-0">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
-                                <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
-                              </svg>
-                            </span>
-                            <div class="form-floating">
-                              <input type="email" class="form-control form-control-sm  w-50" id="floatingInput" [placeholder]="'Enter Your Full Name'" formControlName="years">
-                              <label for="floatingInput">Ex-2022-2023</label>
-                            </div>
-                          </div>
-                          <div class="input-group mb-3 ">
-                            <span class="input-group-text rounded-0">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
-                                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                              </svg>
-                            </span>
-                            <div class="form-floating">
-                              <input type="email" class="form-control form-control-sm  w-50" id="floatingInput" [placeholder]="'Company Location '" formControlName="companyLocation">
-                              <label for="floatingInput">Ex-Pune</label>
-                            </div>
-                          </div>
-                         </div>
+                        </div>
+                        
                       </div>
                        <!-- GRID -->
-                    <div class="form-floating ms-2">
-                      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" placeholder="About Company" formControlName="companyDetails"></textarea>
-                      <label for="floatingTextarea">About Company</label>
+                    <div class="form-floating">
+                      <p >{{resumeForm.get('experience')?.value[i].companyDetails}}</p>
                     </div>
-                  </div>
-
-                  <div class="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="red" class="bi bi-x-circle-fill cursorPointer" viewBox="0 0 16 16" >
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                  </svg>
                   </div>
                 </div>
 
