@@ -4,6 +4,7 @@ import * as pdfMake from 'pdfmake/build/pdfmake';
 // import * as pdfmake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { CommonService } from '../common-service/common.service';
+import { Router } from '@angular/router';
 ( pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 
@@ -16,7 +17,7 @@ export class Design1Component {
 
   resumeForm!:FormGroup;
   addBigDetails:string = '';
-  constructor(private formBuilder:FormBuilder, private commonService:CommonService)
+  constructor(private formBuilder:FormBuilder, private commonService:CommonService, private router:Router)
   {
        this.resumeForm =  this.commonService.callFirstForResumeForm();
   }
@@ -142,7 +143,17 @@ removeHobbies(i:number)
   {
     this.languages.removeAt(i);
   }
+// * SEND FORM to SERVICE
 
+sendFormToService()
+{
+    this.commonService.previewForm = this.resumeForm;
+    console.log("In-DESIGN1 : ", this.resumeForm);
+    console.log("In-SERVICE  : ", this.commonService.previewForm);
+    // localStorage.setItem('resume',JSON.stringify(this.commonService.previewForm as string));
+    this.router.navigateByUrl('/design1/preview1')
+
+}
   //^^^^^^^^^^^^^^^^^ PRINT ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   innerText:any;
   generatePDF()

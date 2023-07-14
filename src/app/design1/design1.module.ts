@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { Design1RoutingModule } from './design1-routing.module';
 import { Design1Component } from './design1.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Preview1Component } from './preview1/preview1.component';
 
 
 @NgModule({
   declarations: [
-    Design1Component
+    Design1Component,
+    Preview1Component
   ],
   imports: [
     CommonModule,

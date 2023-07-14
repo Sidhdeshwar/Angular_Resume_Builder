@@ -8,6 +8,7 @@ export class CommonService {
 
 
   resumeForm!:FormGroup;
+  previewForm:any;
   addBigDetails:string = '';
   constructor(private formBuilder:FormBuilder)
   {
@@ -17,14 +18,14 @@ export class CommonService {
   callFirstForResumeForm()
   {
     this.resumeForm = this.formBuilder.group({
-      gender: ['Mr/Ms'],
-      fullName : ['L F M'],
-      degree : this.formBuilder.array([ new FormControl() ]),
+      gender: ['Mr.'],
+      fullName : ['Siddheshwar Vasant Vyavahare'],
+      degree : this.formBuilder.array([ new FormControl('Jr.Software Developer') ]),
       photoID: [''],
       aboutMe : ['About Me'],
-      phoneNumber : [0, Validators.maxLength(10)],
-      email : [''],
-      address : ['Address'],
+      phoneNumber : [9850123720, Validators.maxLength(10)],
+      email : ['sidvyavahare97@gmail.com'],
+      address : ['Baner, Pune'],
       // Education
       education: this.formBuilder.array([
          this.formBuilder.group({
