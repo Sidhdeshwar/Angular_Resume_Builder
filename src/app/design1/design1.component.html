@@ -1,7 +1,7 @@
  <div class="row ">
   <div class="col-md-4 "></div>
   <div class="col-md-4 text-center "><b class="fs-3">RESUME BUILDER</b></div>
-  <div class="col-md-4 text-center " > <button class="btn btn-warning" (click)="print()">Print</button> </div>
+  <div class="col-md-4 text-center " > <button class="btn btn-warning" (click)="generatePDF()">Print</button> </div>
 
 </div>
 <div class="container  border border-dark border-2">
@@ -10,13 +10,13 @@
       <!-- ? Heading -->
         <div class="row fentBlue">
 
-          <div class="col-md-8 mt-3 mb-2" style="height: 135px;">
+          <div class="col-md-8 mt-3 mb-2" >
             <div class="input-group mb-3">
               <span class="input-group-text">
-                <select class="form-select" id="floatingSelectGrid">
+                <select class="form-select" id="floatingSelectGrid" formControlName="gender">
                   <option selected>Mr/Ms</option>
-                  <option value="1">Mr.</option>
-                  <option value="2">Ms.</option>
+                  <option value="Mr">Mr.</option>
+                  <option value="Ms">Ms.</option>
                 </select>
               </span>
               <div class="form-floating">
@@ -34,9 +34,11 @@
           </div>
           <div class="row col-md-4 text-center  my-2">
                  <div class="col-md-4"></div>
-                 <div class="col-md-4 border border-dark">
-                  <img src="..." class="card-img-top img-thumbnail" alt="Photo-ID">
-                  <input type="file" class="form-control form-control-sm">
+                 <div class="col-md-4 ">
+                  <div class=" border border-dark rounded-0" style="height: 110px; width: 110px;">
+                    <img src="{{PHOTO_ID}}" class="card-img-top img-thumbnail" height="250" width="170" alt="Photo-ID">
+                  </div>
+                  <input type="file" class="form-control form-control-sm mt-2 ms-2"  (change)="uploadPhoto($event)">
                 </div>
                  <div class="col-md-4"></div>
           </div>
@@ -402,13 +404,12 @@
   </form>
 </div>
 
-
+<!--
 <h1>The video element</h1>
 
 <video width="320" height="240" controls autoplay>
   <source src="./../../assets/videos/sid.mp4" type="video/mp4" >
-  <!-- <source src="./../../assets/videos/sid.mp4" type="video/ogg"> -->
   Your browser does not support the video tag.
-</video>
+</video> -->
 
 

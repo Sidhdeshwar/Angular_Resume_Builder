@@ -1,95 +1,92 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-// import * as pdfmake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { CommonService } from '../common-service/common.service';
-( pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
-
-@Component({
-  selector: 'app-design1',
-  templateUrl: './design1.component.html',
-  styleUrls: ['./design1.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class Design1Component {
+export class CommonService {
+
 
   resumeForm!:FormGroup;
   addBigDetails:string = '';
-  constructor(private formBuilder:FormBuilder, private commonService:CommonService)
+  constructor(private formBuilder:FormBuilder)
   {
-       this.resumeForm = formBuilder.group({
-        gender: ['Mr/Ms'],
-        fullName : ['L F M'],
-        degree : formBuilder.array([ new FormControl() ]),
-        photoID: [''],
-        aboutMe : ['About Me'],
-        phoneNumber : [0, Validators.maxLength(10)],
-        email : [''],
-        address : ['Address'],
-        // Education
-        education: formBuilder.array([
-           formBuilder.group({
-            std:['10th Std'],
-            passYear:['05/2012'],
-            collegeName: ['VMV Bardi'],
-            percentage: [79.45]
-           }),
-          //  formBuilder.group({
-          //   std:['12th/Deploma '],
-          //   passYear:['05/2014'],
-          //   collegeName: ['Yashavant Jr College, Bhose (K)'],
-          //   percentage: [60.77]
-          //  }),
-          //  formBuilder.group({
-          //   std:['Degress (Branch)'],
-          //   passYear:['05/2019'],
-          //   collegeName: ['SKN SINHGAD COLLEGE OF ENGINNERING, KORTI PANDHARPUR'],
-          //   percentage: [73.27]
-          //  })
-        ]),
-         skills: formBuilder.array([
-          formBuilder.group({
-             skillName: ['SKL',Validators.required],
-             percentage:[75]
-          })
-         ]),
-         hobbies: formBuilder.array([
-            new FormControl(''),
-            new FormControl(''),
-            new FormControl(''),
-         ]),
-         awards: formBuilder.array([
+     this.callFirstForResumeForm();
+  }
+
+  callFirstForResumeForm()
+  {
+    this.resumeForm = this.formBuilder.group({
+      gender: ['Mr/Ms'],
+      fullName : ['L F M'],
+      degree : this.formBuilder.array([ new FormControl() ]),
+      photoID: [''],
+      aboutMe : ['About Me'],
+      phoneNumber : [0, Validators.maxLength(10)],
+      email : [''],
+      address : ['Address'],
+      // Education
+      education: this.formBuilder.array([
+         this.formBuilder.group({
+          std:['10th Std'],
+          passYear:['05/2012'],
+          collegeName: ['VMV Bardi'],
+          percentage: [79.45]
+         }),
+        //  this.formBuilder.group({
+        //   std:['12th/Deploma '],
+        //   passYear:['05/2014'],
+        //   collegeName: ['Yashavant Jr College, Bhose (K)'],
+        //   percentage: [60.77]
+        //  }),
+        //  this.formBuilder.group({
+        //   std:['Degress (Branch)'],
+        //   passYear:['05/2019'],
+        //   collegeName: ['SKN SINHGAD COLLEGE OF ENGINNERING, KORTI PANDHARPUR'],
+        //   percentage: [73.27]
+        //  })
+      ]),
+       skills: this.formBuilder.array([
+        this.formBuilder.group({
+           skillName: ['SKL',Validators.required],
+           percentage:[75]
+        })
+       ]),
+       hobbies: this.formBuilder.array([
+          new FormControl(''),
+          new FormControl(''),
           new FormControl(''),
        ]),
-        languages: formBuilder.array([
-          formBuilder.group({
-              L1: [''],
-              Read: [true],
-              Write:[false],
-              Speak:[false]
-          })
-        ]),
-        projects: formBuilder.array([
-          formBuilder.group({
-            projectTitle: ['Weeding Machine'],
-            usedTools:['Autocad'],
-            projectDescription:['This is Very Simple Project']
-          }),
-        ]),
-        experience: formBuilder.array([
-          formBuilder.group({
-            position: ['Jr.Software Developer'],
-            companyName: ['Angular Minds Pvt Ltd'],
-            years: ['2023-2025'],
-            companyLocation:['Pune'],
-            companyDetails:['Best Company Ever']
-          })
-        ])
-       })
-
-
+       awards: this.formBuilder.array([
+        new FormControl(''),
+     ]),
+      languages: this.formBuilder.array([
+        this.formBuilder.group({
+            L1: [''],
+            Read: [true],
+            Write:[false],
+            Speak:[false]
+        })
+      ]),
+      projects: this.formBuilder.array([
+        this.formBuilder.group({
+          projectTitle: ['Weeding Machine'],
+          usedTools:['Autocad'],
+          projectDescription:['This is Very Simple Project']
+        }),
+      ]),
+      experience: this.formBuilder.array([
+        this.formBuilder.group({
+          position: ['Jr.Software Developer'],
+          companyName: ['Angular Minds Pvt Ltd'],
+          years: ['2023-2025'],
+          companyLocation:['Pune'],
+          companyDetails:['Best Company Ever']
+        })
+      ])
+     })
   }
+
   // ^ PHOTO
 PHOTO_ID:any
   uploadPhoto(event:any)
@@ -265,7 +262,5 @@ removeHobbies(i:number)
 console.log("Print : ", this.resumeForm.value);
 
   }
-
-
 
 }
