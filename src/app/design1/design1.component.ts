@@ -18,132 +18,40 @@ export class Design1Component {
   addBigDetails:string = '';
   constructor(private formBuilder:FormBuilder, private commonService:CommonService)
   {
-       this.resumeForm = formBuilder.group({
-        gender: ['Mr/Ms'],
-        fullName : ['L F M'],
-        degree : formBuilder.array([ new FormControl() ]),
-        photoID: [''],
-        aboutMe : ['About Me'],
-        phoneNumber : [0, Validators.maxLength(10)],
-        email : [''],
-        address : ['Address'],
-        // Education
-        education: formBuilder.array([
-           formBuilder.group({
-            std:['10th Std'],
-            passYear:['05/2012'],
-            collegeName: ['VMV Bardi'],
-            percentage: [79.45]
-           }),
-          //  formBuilder.group({
-          //   std:['12th/Deploma '],
-          //   passYear:['05/2014'],
-          //   collegeName: ['Yashavant Jr College, Bhose (K)'],
-          //   percentage: [60.77]
-          //  }),
-          //  formBuilder.group({
-          //   std:['Degress (Branch)'],
-          //   passYear:['05/2019'],
-          //   collegeName: ['SKN SINHGAD COLLEGE OF ENGINNERING, KORTI PANDHARPUR'],
-          //   percentage: [73.27]
-          //  })
-        ]),
-         skills: formBuilder.array([
-          formBuilder.group({
-             skillName: ['SKL',Validators.required],
-             percentage:[75]
-          })
-         ]),
-         hobbies: formBuilder.array([
-            new FormControl(''),
-            new FormControl(''),
-            new FormControl(''),
-         ]),
-         awards: formBuilder.array([
-          new FormControl(''),
-       ]),
-        languages: formBuilder.array([
-          formBuilder.group({
-              L1: [''],
-              Read: [true],
-              Write:[false],
-              Speak:[false]
-          })
-        ]),
-        projects: formBuilder.array([
-          formBuilder.group({
-            projectTitle: ['Weeding Machine'],
-            usedTools:['Autocad'],
-            projectDescription:['This is Very Simple Project']
-          }),
-        ]),
-        experience: formBuilder.array([
-          formBuilder.group({
-            position: ['Jr.Software Developer'],
-            companyName: ['Angular Minds Pvt Ltd'],
-            years: ['2023-2025'],
-            companyLocation:['Pune'],
-            companyDetails:['Best Company Ever']
-          })
-        ])
-       })
-
-
+       this.resumeForm =  this.commonService.callFirstForResumeForm();
   }
   // ^ PHOTO
 PHOTO_ID:any
   uploadPhoto(event:any)
   {
-     let reader = new FileReader();
-     reader.readAsDataURL(event.target.files[0]);
-     reader.onload = (e:any)=>{
-        this.PHOTO_ID = e.target.result;
-        this.resumeForm.patchValue({
-          photoID: e.target.result
-        })
-     }
+    this.resumeForm = this.commonService.uploadPhoto(event);
   }
 // * FULL NAME && Degree
   deleteDegree()
   {
-    (this.resumeForm.get('degree') as FormArray).removeAt(0);
+    this.resumeForm = this.commonService.deleteDegree();
   }
-
   // ******************* EDUCATION **********************************
   get education()
   {
-    return (this.resumeForm.get('education') as FormArray);
+    return this.commonService.education;
   }
   addEducation()
   {
-    let edu = this.formBuilder.group({
-      std:[''],
-      passYear:[''],
-      collegeName: [''],
-      percentage: ['']
-     });
-    this.education.push(edu);
-     console.log(this.resumeForm);
-
+     this.resumeForm = this.commonService.addEducation();
   }
   removeEducation(id:any)
   {
     this.education.removeAt(id);
   }
-
-
   // ***************** SKILL's *****************************************
   get skills()
   {
-    return (this.resumeForm.get('skills') as FormArray);
+    return this.commonService.skills;
   }
   addSkills()
   {
-     let skill = this.formBuilder.group({
-      skillName: [''],
-      percentage:[50]
-   });
-    this.skills.push(skill);
+    this.resumeForm =  this.commonService.addSkills();
   }
   removeSkills(id:any)
   {
@@ -154,17 +62,12 @@ PHOTO_ID:any
 
   get projects()
   {
-    return (this.resumeForm.get(`projects`) as FormArray)
+    return this.commonService.projects;
   }
 
   addProjectORMORE()
   {
-     let newProject = this.formBuilder.group({
-      projectTitle: ['Weeding Machine'],
-      usedTools:['Autocad'],
-      projectDescription:['This is Very Simple Project']
-    });
-   this.projects.push(newProject);
+      this.resumeForm = this.commonService.addProjectORMORE();
   }
 
   removeProject(i:number)
@@ -180,19 +83,12 @@ PHOTO_ID:any
   // ^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Work Experience ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   get experience()
   {
-    return (this.resumeForm.get('experience') as FormArray)
+    return this.commonService.experience;
   }
 
   addExperience()
   {
-    let exp = this.formBuilder.group({
-      position: ['Jr.Software Developer'],
-      companyName: ['Angular Minds Pvt Ltd'],
-      years: ['2023-2025'],
-      companyLocation:['Mumbai'],
-      companyDetails:['Best Company Ever']
-    })
-    this.experience.push(exp);
+      this.resumeForm = this.commonService.addExperience();
   }
 
   removeExperience(i:number)
@@ -209,7 +105,7 @@ PHOTO_ID:any
   // ?????????????? 1) INTEREST/HOBBIES ???????????????????
   get hobbies()
   {
-     return (this.resumeForm.get('hobbies') as FormArray);
+     return this.commonService.hobbies;
   }
 addHobbies()
 {
@@ -223,7 +119,7 @@ removeHobbies(i:number)
   // ?????????????? 1) Awards/Achievements ???????????????????
   get awards()
   {
-    return (this.resumeForm.get('awards') as FormArray);
+    return this.commonService.awards;
   }
   addAwards()
   {
@@ -236,17 +132,11 @@ removeHobbies(i:number)
   // ?????????????? 3) Awards/Achievements ???????????????????
   get languages()
   {
-    return (this.resumeForm.get('languages') as FormArray);
+    return this.commonService.languages;
   }
   addLangulages()
   {
-     let lang = this.formBuilder.group({
-      L1: [''],
-      Read: [true],
-      Write:[false],
-      Speak:[false]
-  })
-    this.languages.push(lang);
+      this.resumeForm = this.commonService.addLangulages();
   }
   removeLanguages(i:number)
   {
@@ -263,7 +153,6 @@ removeHobbies(i:number)
      }
 // pdfMake.createPdf(docDefination).open();
 console.log("Print : ", this.resumeForm.value);
-
   }
 
 

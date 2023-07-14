@@ -36,7 +36,7 @@
                  <div class="col-md-4"></div>
                  <div class="col-md-4 ">
                   <div class=" border border-dark rounded-0" style="height: 110px; width: 110px;">
-                    <img src="{{PHOTO_ID}}" class="card-img-top img-thumbnail" height="250" width="170" alt="Photo-ID">
+                    <img src="{{resumeForm.get('photoID')?.value}}" class="card-img-top img-thumbnail" height="250" width="170" alt="Photo-ID">
                   </div>
                   <input type="file" class="form-control form-control-sm mt-2 ms-2"  (change)="uploadPhoto($event)">
                 </div>

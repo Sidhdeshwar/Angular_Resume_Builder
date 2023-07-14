@@ -85,6 +85,8 @@ export class CommonService {
         })
       ])
      })
+
+     return this.resumeForm;
   }
 
   // ^ PHOTO
@@ -99,11 +101,13 @@ PHOTO_ID:any
           photoID: e.target.result
         })
      }
+     return this.resumeForm;
   }
 // * FULL NAME && Degree
   deleteDegree()
   {
     (this.resumeForm.get('degree') as FormArray).removeAt(0);
+    return this.resumeForm;
   }
 
   // ******************* EDUCATION **********************************
@@ -120,8 +124,7 @@ PHOTO_ID:any
       percentage: ['']
      });
     this.education.push(edu);
-     console.log(this.resumeForm);
-
+    return this.resumeForm;
   }
   removeEducation(id:any)
   {
@@ -141,6 +144,7 @@ PHOTO_ID:any
       percentage:[50]
    });
     this.skills.push(skill);
+    return this.resumeForm;
   }
   removeSkills(id:any)
   {
@@ -162,6 +166,7 @@ PHOTO_ID:any
       projectDescription:['This is Very Simple Project']
     });
    this.projects.push(newProject);
+   return this.resumeForm;
   }
 
   removeProject(i:number)
@@ -190,6 +195,7 @@ PHOTO_ID:any
       companyDetails:['Best Company Ever']
     })
     this.experience.push(exp);
+    return this.resumeForm;
   }
 
   removeExperience(i:number)
@@ -244,6 +250,7 @@ removeHobbies(i:number)
       Speak:[false]
   })
     this.languages.push(lang);
+    return this.resumeForm;
   }
   removeLanguages(i:number)
   {
