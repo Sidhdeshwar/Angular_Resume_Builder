@@ -18,7 +18,7 @@ export class CommonService {
   callFirstForResumeForm()
   {
     this.resumeForm = this.formBuilder.group({
-      gender: ['Mr.'],
+      gender: ['Mr'],
       fullName : ['Siddheshwar Vasant Vyavahare'],
       degree : this.formBuilder.array([ new FormControl('Jr.Software Developer') ]),
       photoID: [''],
@@ -54,17 +54,17 @@ export class CommonService {
         })
        ]),
        hobbies: this.formBuilder.array([
-          new FormControl(''),
-          new FormControl(''),
-          new FormControl(''),
+          new FormControl('Singing'),
+          new FormControl('Dancing'),
+          new FormControl('SWeeming'),
        ]),
        awards: this.formBuilder.array([
-        new FormControl(''),
+        new FormControl('My Awards'),
      ]),
       languages: this.formBuilder.array([
         this.formBuilder.group({
-            L1: [''],
-            Read: [true],
+            L1: ['Marathi'],
+            Read: [false],
             Write:[false],
             Speak:[false]
         })
@@ -246,7 +246,7 @@ removeHobbies(i:number)
   {
      let lang = this.formBuilder.group({
       L1: [''],
-      Read: [true],
+      Read: [false],
       Write:[false],
       Speak:[false]
   })

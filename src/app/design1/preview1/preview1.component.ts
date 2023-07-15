@@ -9,15 +9,10 @@ import { CommonService } from 'src/app/common-service/common.service';
 })
 export class Preview1Component  {
 
-  resumeForm!: any;
+  resumeForm!: FormGroup;
   constructor(public commonService: CommonService)
   {
     this.resumeForm = commonService.resumeForm;
-    // let a = localStorage.getItem('resume');
-    //  if(a)
-    //  {
-    //    this.resumeForm = JSON.parse(a);
-    //  }
   }
 
   get education()

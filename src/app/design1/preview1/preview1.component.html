@@ -3,14 +3,14 @@
   <div class="col-md-4 text-center "><b class="fs-3"> </b></div>
   <div class="col-md-4 text-center " > <button class="btn btn-warning" >Print</button> </div>
 </div>
-<div class="container  border border-dark border-2">
+<div class="container  border border-dark border-3">
   <form id="formPdf"  [formGroup]="resumeForm">
     <div class="m-2">
       <!-- ? Heading -->
         <div class="row fentBlue">
          <div class="text-center mt-2"><b>RESUME</b></div>
           <div class="col-md-8 ms-3 mt-1 mb-2" >
-            <b class="fs-3 bold">{{resumeForm.get('gender')?.value}}  {{resumeForm?.get('fullName')?.value}}</b>
+            <b class="fs-3 bold">{{resumeForm.get('gender')?.value}}. {{resumeForm?.get('fullName')?.value}}</b>
             <div formArrayName="degree" >
             <div class="form-floating  d-flex" *ngFor="let o of resumeForm.get('degree')?.value as FormArray; let i = index ">
                 <b>{{resumeForm.get('degree')?.value}}</b>
@@ -35,7 +35,7 @@
             <div class="border-bottom border-2 pb-1  border-secondary">
               <b class="my-2">ABOUT ME</b>
             </div>
-           <p class="col-md-9">{{resumeForm.get('aboutMe')?.value}} </p>
+           <p style="text-align: justify;">{{resumeForm.get('aboutMe')?.value}} </p>
           </div>
           <div class="col-md-3 text-center my-2 fentBlue">
             <!-- & Phone -->
@@ -155,15 +155,15 @@
                            <!-- * SKILL's Details -->
 
                              <!-- * Project's Details -->
-                             <div class=" my-2 " *ngIf="projects?.controls" >
+                             <div class=" mt-2 " *ngIf="projects?.controls" >
 
-                              <div class=" mt-2 mb-2" >
-                                <div class="border-bottom border-2 pb-1  border-secondary">
-                                  <b >PROJECT DETAIL'S</b>
+                              <div class=" mt-2" >
+                                <div class="border-bottom border-2 pb ExtraFentBlue border-secondary">
+                                  <b class="ms-1">PROJECT DETAIL'S</b>
                                 </div>
-                                
+
                                 <div class=" mt-2" formArrayName="projects" >
-                                  <div class=" mb-3" *ngFor="let o of projects?.controls ; let i=index" [formGroupName]="i">
+                                  <div class="mb-0" *ngFor="let o of projects?.controls ; let i=index" [formGroupName]="i">
                                     <div class="d-flex ">
                                       <div class="w-100 ms-3">
                                         <div class="form-floating ">
@@ -189,12 +189,12 @@
         <!-- ^ Work Experience -->
         <div class=" " *ngIf="experience?.controls" >
 
-          <div class=" mb-2" >
-            <div class="border-bottom border-2 pb-1  border-secondary">
-              <b >WORK EXPERIENCE </b>
+          <div class=" mb-0" >
+            <div class="border-bottom border-2 pb-1 ExtraFentBlue border-secondary">
+              <b class="ms-1">WORK EXPERIENCE </b>
             </div>
             <div class="mt-2" formArrayName="experience" >
-              <div class=" mb-3" *ngFor="let o of experience?.controls ; let i=index" [formGroupName]="i">
+              <div class=" mb-0" *ngFor="let o of experience?.controls ; let i=index" [formGroupName]="i">
                 <div class="d-flex">
                   <div class="w-100 ms-3">
                     <div class="form-floating ">
@@ -203,7 +203,7 @@
                       <!--&  Flex - Company - Date - Location -->
                       <div class="row">
                         <div class="col-md-6"> <i >{{resumeForm.get('experience')?.value[i].companyName}}</i></div>
-                        <div class="col-md-3 d-flex">   
+                        <div class="col-md-3 d-flex">
                           <span class=" rounded-0">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
                             <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
@@ -223,7 +223,7 @@
                             <i >{{resumeForm.get('experience')?.value[i].companyLocation}}</i>
                           </div>
                         </div>
-                        
+
                       </div>
                        <!-- GRID -->
                     <div class="form-floating">
@@ -240,72 +240,57 @@
         </div>
         <!-- ^ Work Experience -->
                                <!-- * Hobbies's Details -->
-                               <div class="row mt-4 bg-primary text-white">
+          <div class="row  pb-3 bg-primary text-white">
 <!-- ? Hobby-1 -->
-                                <div class="col-md-4 mt-2">
-                                  <div class="d-flex justify-content-between">
-                                    <b class="text-white">INTEREST/HOBBIES                                    </b>
-                                  </div>
-                                  <hr class="border-2">
-                                  <div class="mt-2" formArrayName="hobbies">
-                                         <ul *ngFor="let o of hobbies.controls; let i=index">
-                                          <li > <div class="d-flex">
-                                            <input type="text" class="form-control form-control-sm mx-2 w-50" placeholder="Enter Your Hobby- {{i+1}} " [formControlName]="i"  >
-                                            <b class="text-danger mt-2" >X</b>
-                                             </div>
-                                         </li>
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle-dotted mt-2" viewBox="0 0 16 16" *ngIf="(i+1)==(hobbies.length)">
-                                            <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                          </svg>
-                                         </ul>
-                                  </div>
-                                </div>
+            <div class="col-md-4 mt-2">
+              <div class="border-bottom border-2 pb-1  border-white">
+                <b class="ms-1">HOBBIES/INTERESTS </b>
+              </div>
+              <div class="" formArrayName="hobbies">
+                      <ul class="m-0" *ngFor="let o of hobbies.controls; let i=index">
+                      <li class="">
+                        <div class="d-flex">
+                        <p class=" p-0 m-0" >{{resumeForm.get('hobbies')?.value[i]}}</p>
+                        </div>
+                      </li>
+                      </ul>
+              </div>
+            </div>
 <!-- ? Hobby-1 -->
                <!-- ? AWARDS/ACHIEVEMENTS -2 -->
                <div class="col-md-4 mt-2">
-                <div class="d-flex justify-content-between">
-                  <b class="text-white">AWARDS/ACHIEVEMENTS                                    </b>
+                <div class="border-bottom border-2 pb-1  border-white">
+                  <b class="ms-1">AWARDS/ACHIEVEMENTS </b>
                 </div>
-                <hr class="border-2">
-                <div class="mt-2" formArrayName="awards">
-                       <ul *ngFor="let o of awards.controls; let i=index">
-                        <li >
-                          <div class="d-flex">
-                            <textarea name="" id="" cols="30" rows="2" class="form-control form-control-sm mx-2" [formControlName]="i" placeholder="Enter your Achievements- {{i+1}}"></textarea>
-                            <b class="text-danger mt-2">X</b>
-                          </div>
-                         </li>
 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle-dotted mt-2" viewBox="0 0 16 16" *ngIf="(i+1)== awards.length">                         <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                        </svg>
+                <div class="mt-2" formArrayName="awards">
+                       <ul class="m-0" *ngFor="let o of awards.controls; let i=index">
+                        <li class="">
+                          <div class="d-flex">
+                          <p class=" p-0 m-0" >{{resumeForm.get('awards')?.value[i]}}</p>
+                          </div>
+                        </li>
                        </ul>
                 </div>
               </div>
 <!-- ? AWARDS/ACHIEVEMENTS -2 -->
                <!-- ? Languages-3 -->
                <div class="col-md-4 mt-2">
-                <div class="d-flex justify-content-between">
-                  <b class="text-white">LANGUAGES</b>
+                <div class="border-bottom border-2 pb-1  border-white">
+                  <b class="ms-1">LANGUAGES </b>
                 </div>
-                <hr class="border-2">
+
                 <div class="mt-2" formArrayName="languages">
-                       <ul *ngFor="let o of languages.controls; let i=index" [formGroupName]="i">
-                        <li >
+                       <ul class="m-0" *ngFor="let o of languages.controls; let i=index" [formGroupName]="i">
+                        <li class="">
                           <div class="d-flex">
-                            <input type="text" class="form-control form-control-sm mx-2 w-25" placeholder="Language- {{i+1}} " formControlName="L1"  >
-
-                              <input type="checkbox" > <p class="pt-2">Write</p>
-                              <input type="checkbox" class="ms-2"><p class="pt-2">Read</p>
-                              <input type="checkbox" class="ms-2"> <p class="pt-2">Speak</p>
-
-
-                            <b class="text-danger mt-2 ms-3" >X</b>
+                          <p class=" p-0 m-0" >{{resumeForm.get('languages')?.value[i].L1}} :
+                            <span *ngIf="resumeForm.get('languages')?.value[i].Read">Read /</span>
+                            <span *ngIf="resumeForm.get('languages')?.value[i].Write">Write /</span>
+                            <span *ngIf="resumeForm.get('languages')?.value[i].Speak">Speak</span>
+                          </p>
                           </div>
-                         </li>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-circle-dotted mt-2" viewBox="0 0 16 16" *ngIf="(i+1)== languages.length" >
-                          <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                        </svg>
+                        </li>
                        </ul>
                 </div>
               </div>

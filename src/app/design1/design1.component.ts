@@ -143,15 +143,37 @@ removeHobbies(i:number)
   {
     this.languages.removeAt(i);
   }
-// * SEND FORM to SERVICE
+// * SEND FORM to SERVICE // PREVIEW
 
 sendFormToService()
 {
     this.commonService.previewForm = this.resumeForm;
-    console.log("In-DESIGN1 : ", this.resumeForm);
-    console.log("In-SERVICE  : ", this.commonService.previewForm);
-    // localStorage.setItem('resume',JSON.stringify(this.commonService.previewForm as string));
-    this.router.navigateByUrl('/design1/preview1')
+    this.router.navigateByUrl('/design1/preview1');
+}
+
+// ~ Confirm Thw Language :
+
+confirmLanguage(i:any, categery:any)
+{
+   if(categery=='Read')
+   {
+    ((this.languages).at(i) as FormGroup).patchValue({
+      Read :  !this.languages.at(i).get('Read')?.value
+    });
+   }
+   if(categery=='Write')
+   {
+    ((this.languages).at(i) as FormGroup).patchValue({
+      Write :  !this.languages.at(i).get('Write')?.value
+    });
+   }
+   if(categery=='Speak')
+   {
+    ((this.languages).at(i) as FormGroup).patchValue({
+      Speak :  !this.languages.at(i).get('Speak')?.value
+    });
+   }
+  // console.log("Resume ", this.languages.at(i).get('Speak')?.value, this.languages.controls[i]);
 
 }
   //^^^^^^^^^^^^^^^^^ PRINT ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -381,12 +381,9 @@
                         <li >
                           <div class="d-flex">
                             <input type="text" class="form-control form-control-sm mx-2 w-25" placeholder="Language- {{i+1}} " formControlName="L1"  >
-
-                              <input type="checkbox" > <p class="pt-2">Write</p>
-                              <input type="checkbox" class="ms-2"><p class="pt-2">Read</p>
-                              <input type="checkbox" class="ms-2"> <p class="pt-2">Speak</p>
-
-
+                              <input type="checkbox" (change)="confirmLanguage(i,'Write')"> <p class="pt-2">Write</p>
+                              <input type="checkbox" class="ms-2" (change)="confirmLanguage(i, 'Read')"><p class="pt-2">Read</p>
+                              <input type="checkbox" class="ms-2" (change)="confirmLanguage(i,'Speak')"> <p class="pt-2">Speak</p>
                             <b class="text-danger mt-2 ms-3" (click)="removeLanguages(i)">X</b>
                           </div>
                          </li>
@@ -404,12 +401,6 @@
   </form>
 </div>
 
-<!--
-<h1>The video element</h1>
 
-<video width="320" height="240" controls autoplay>
-  <source src="./../../assets/videos/sid.mp4" type="video/mp4" >
-  Your browser does not support the video tag.
-</video> -->
 
 
