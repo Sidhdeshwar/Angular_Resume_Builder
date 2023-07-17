@@ -1,7 +1,11 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CommonService } from 'src/app/common-service/common.service';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
+import { Router } from '@angular/router';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+( pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-preview1',
   templateUrl: './preview1.component.html',
@@ -42,5 +46,15 @@ export class Preview1Component  {
   get languages()
   {
     return this.commonService.languages;
+  }
+// ^^^^^^^^^^^^^^^^^6 PDF
+  generatePDF()
+  {
+    let a :string = document.getElementById('formPdf')?.innerText as string;
+     let docDefination = {
+      content: [a]
+     }
+pdfMake.createPdf(docDefination).open();
+console.log("Print : ", this.resumeForm.value);
   }
 }

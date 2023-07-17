@@ -18,21 +18,21 @@ export class CommonService {
   callFirstForResumeForm()
   {
     this.resumeForm = this.formBuilder.group({
-      gender: ['Mr'],
-      fullName : ['Siddheshwar Vasant Vyavahare'],
-      degree : this.formBuilder.array([ new FormControl('Jr.Software Developer') ]),
+      gender: ['Mr/Ms'],
+      fullName : [''],
+      degree : this.formBuilder.array([ new FormControl('') ]),
       photoID: [''],
-      aboutMe : ['About Me'],
-      phoneNumber : [9850123720, Validators.maxLength(10)],
-      email : ['sidvyavahare97@gmail.com'],
-      address : ['Baner, Pune'],
+      aboutMe : [''],
+      phoneNumber : ['', Validators.maxLength(10)],
+      email : [''],
+      address : [''],
       // Education
       education: this.formBuilder.array([
          this.formBuilder.group({
           std:['10th Std'],
           passYear:['05/2012'],
-          collegeName: ['VMV Bardi'],
-          percentage: [79.45]
+          collegeName: [''],
+          percentage: []
          }),
         //  this.formBuilder.group({
         //   std:['12th/Deploma '],
@@ -49,21 +49,21 @@ export class CommonService {
       ]),
        skills: this.formBuilder.array([
         this.formBuilder.group({
-           skillName: ['SKL',Validators.required],
+           skillName: ['',Validators.required],
            percentage:[75]
         })
        ]),
        hobbies: this.formBuilder.array([
-          new FormControl('Singing'),
-          new FormControl('Dancing'),
-          new FormControl('SWeeming'),
+          new FormControl(''),
+          new FormControl(''),
+          new FormControl(''),
        ]),
        awards: this.formBuilder.array([
-        new FormControl('My Awards'),
+        new FormControl(''),
      ]),
       languages: this.formBuilder.array([
         this.formBuilder.group({
-            L1: ['Marathi'],
+            L1: [''],
             Read: [false],
             Write:[false],
             Speak:[false]
@@ -71,9 +71,9 @@ export class CommonService {
       ]),
       projects: this.formBuilder.array([
         this.formBuilder.group({
-          projectTitle: ['Weeding Machine'],
-          usedTools:['Autocad'],
-          projectDescription:['This is Very Simple Project']
+          projectTitle: [''],
+          usedTools:[''],
+          projectDescription:['']
         }),
       ]),
       experience: this.formBuilder.array([
@@ -82,7 +82,7 @@ export class CommonService {
           companyName: ['Angular Minds Pvt Ltd'],
           years: ['2023-2025'],
           companyLocation:['Pune'],
-          companyDetails:['Best Company Ever']
+          companyDetails:['']
         })
       ])
      })
@@ -162,9 +162,9 @@ PHOTO_ID:any
   addProjectORMORE()
   {
      let newProject = this.formBuilder.group({
-      projectTitle: ['Weeding Machine'],
-      usedTools:['Autocad'],
-      projectDescription:['This is Very Simple Project']
+      projectTitle: [''],
+      usedTools:[''],
+      projectDescription:['']
     });
    this.projects.push(newProject);
    return this.resumeForm;
@@ -189,11 +189,11 @@ PHOTO_ID:any
   addExperience()
   {
     let exp = this.formBuilder.group({
-      position: ['Jr.Software Developer'],
-      companyName: ['Angular Minds Pvt Ltd'],
-      years: ['2023-2025'],
-      companyLocation:['Mumbai'],
-      companyDetails:['Best Company Ever']
+      position: [''],
+      companyName: [''],
+      years: [''],
+      companyLocation:[''],
+      companyDetails:['']
     })
     this.experience.push(exp);
     return this.resumeForm;
