@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
-  { path: 'design1', loadChildren: () => import('./design1/design1.module').then(m => m.Design1Module) }
+  { path: 'design1', loadChildren: () => import('./design1/design1.module').then(m => m.Design1Module) },
+
+  { path: 'design2', loadChildren: () => import('./design2/design2.module').then(m => m.Design2Module) }
 
 ];
 
