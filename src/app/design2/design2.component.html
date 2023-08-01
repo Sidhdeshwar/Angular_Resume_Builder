@@ -32,13 +32,13 @@
    <polyline points="50,30 70,10 90,50 50,100 10,50 30,10 50,30" fill="none" stroke="green"></polyline>
    <!-- Need to give start point again at end, Ex- 50,30 at End  , To Complete the Line(stroke)-->
 </svg>
-<!-- * Polyline --> Polygon
+<!-- * Polygon --> Polygon
 <svg viewBox="0 0 100 100" class="border" style="height: 300px; width:300px">
   <polygon points="50,30 70,10 90,50 50,100 10,50 30,10" fill="none" stroke="green"></polygon>
   <!-- No need to give start point again at end, Ex- 50,30 at End , To Complete the Line(stroke) -->
 </svg>
 <br>
-<!-- * Polyline -->Path
+<!-- * Path -->Path ====1
 <svg viewBox="0 0 100 100" class="border" style="height: 300px; width:300px">
 <path d="M10,20 L90,20 L90,90 L10,90 Z" stroke="red" fill="orange" ></path>
 <!--
@@ -53,8 +53,180 @@
     H- Horizontal
     V-Vertical
  -->
-
 </svg>
 
-<!--  -->
+<!-- * Path -->Path ====2
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:300px">
+  <path d="M10,20 C30,40 60,-20 90,20 Z" stroke="red" fill="orange" ></path>
+  <path d="M30,50 C10,30 90,30 70,50" stroke="green" fill="purple"></path>
+  <path d="M10,80 C20,100 40,100  50,80 S70,50 90,80  " stroke="green" fill="orange"></path>
+  <!-- C{Cubic Curve} -Always 2 Co-ordinates astat : (C20,100 40,100) -->
+   <!-- S-Always 1 Co-ordinates astat , 1-assume karto : (S70,50) -->
+   <!-- 40,100 ===> Final End point Ahe, S Barobar Nahi -->
+</svg>
 
+<!-- * Path -->Path ====3
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:300px">
+  <path d="M10,50 Q30,10 50,50 T90,50" stroke="green" fill="orange"></path>
+  <!-- Q{Quadratic Bezier Curve} -Always 1 Co-ordinates astat : (Q20,100 ) - To Madhala Center Dheto -->
+  <!-- T- T-EndPoint Create Mirror of Q in Opposite  -->
+  <!-- T & Q Always Work Together -->
+</svg>
+
+<!-- * Path -->Path (Arc) ====4
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:300px">
+  <path d="M10,50 A50,-90 180 0 1  90,50 " stroke="green" fill="orange"></path>
+  <!-- ^ A30,10     0,            0,            1         -->
+  <!--        x-axis rotat(Degree) / Large Arc Flag / sweep Flag   -->
+
+</svg>
+<br>
+
+
+<!--  -->
+<!-- ^ Text Element --> <h5>Text Element</h5>
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:600px" >
+  <text x="50" y="50" text-anchor="middle" fill="red" stroke="red" font-family="impact" font-size="25px" >Angular <tspan class="subText" dy="15" dx="10">Minds</tspan> </text>
+
+  <!-- x & y pasun ( text-anchor="middle / end /start" ) -->
+  <!-- <tspan> madhe dx,dy = relative Position gheil(jitun Ahe Tithun) && x, y = absolute position Gheil (Outer Border Box pasun )  -->
+</svg>
+<style>
+  .subText{
+    stroke: green;
+    fill: green;
+  }
+</style>
+
+<!--  -->
+<!-- ^ Text Element --> <b>Image Element</b>
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:600px" >
+ <image x="50" y="20" height="50" width="50" xlink:href="./assets/S_Dhavan.jpg"></image>
+ <line x1="10" y1="50" x2="120" y2="50" stroke="red"></line>
+</svg>
+
+<!-- ^ Stroke Properties --> <h5>Stroke Properties</h5>
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:600px" >
+  <rect x="10" y="10" width="50" height="30" class="rect"  ></rect>
+
+  <line class="line" x1="-20" y1="60" x2="100" y2="60" ></line>
+</svg>
+<style>
+  .rect{
+
+    fill: orange;
+    stroke: brown;
+    /* Stroke Properties */
+    stroke-width: 1;
+    stroke-opacity: 0.7;
+    stroke-linejoin: round; /* border-line corner-round */
+    stroke-linejoin: bevel;  /* border-line corner-Cutted Tirpa */
+    stroke-dasharray: 5,3,1,3;   /* border-line DASH-5 , gap-3, DASH-1 , gap-3 .......  */
+    stroke-dashoffset: 1;      /* border-line moves left by 1 */
+
+    /*  fill Properties :  */
+    fill-opacity: 0.4;   /* Fills fent Color */
+    fill-rule: evenodd;  /* Alternate Color , Lagto && Nay Lagat */
+  }
+  .line{
+    stroke: crimson;
+    stroke-width: 10;
+    stroke-linecap:round
+  }
+</style>
+
+
+<!-- * Grouping Element  -->Grouping
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:300px">
+  <g class="group">
+    <rect x="20" y="20" width="60" height="60" fill="red"></rect>
+    <circle cx="50" cy="50" r="20" fill="orange"></circle>
+    <rect x="40" y="40" width="20" height="20" fill="purple"></rect>
+  </g>
+
+</svg>
+<style>
+  .group{
+    stroke: green;
+    transform: rotate(45deg);
+    transform-origin: center;
+  }
+</style>
+
+<!-- * Grouping Element  -->g & defs
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:300px">
+<defs>
+  <g class="group" id="useMultiple">
+    <circle cx="50" cy="50" r="25" fill="orange"></circle>
+    <rect x="40" y="40" width="20" height="20" fill="purple"></rect>
+  </g>
+</defs>
+<!-- ^ Defs madhil disnar nahi -->
+<use xlink:href="#useMultiple" x="10" y="10"></use>
+<use xlink:href="#useMultiple" class="use2" x="-10" y="10"></use>
+</svg>
+<style>
+  .group{
+    stroke: green;
+    transform: rotate(45deg);
+    transform-origin: center;
+  }
+  .use2{
+    stroke: aqua;
+  }
+</style>
+
+
+<!-- * Grouping Element ===(Thod Samajal ) -->Symbol & Use
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:300px">
+  <defs>
+  <symbol id="symbol1" viewBox="0,0,5,80">
+    <g class="group" id="useMultiple">
+      <circle cx="50" cy="50" r="25" fill="orange"></circle>
+      <rect x="40" y="40" width="20" height="20" fill="purple"></rect>
+    </g>
+  </symbol>
+  <symbol id="symbol2" viewBox="0,0,-50,-40">
+    <g class="group" id="useMultiple">
+      <circle cx="50" cy="50" r="25" fill="orange"></circle>
+      <rect x="40" y="40" width="20" height="20" fill="purple"></rect>
+    </g>
+  </symbol>
+</defs>
+<!-- ?By Symbol tag =  We can Change viewBOx of inside template -->
+
+
+  <!-- ^ Defs madhil disnar nahi -->
+  <use xlink:href="#symbol1" x="10" y="10"></use>
+  <use xlink:href="#symbol2" class="use2" x="-10" y="10"></use>
+  </svg>
+  <style>
+    .group{
+      stroke: green;
+      transform: rotate(45deg);
+      transform-origin: center;
+    }
+    .use2{
+      stroke: aqua;
+    }
+  </style>
+
+<!-- * Text + Path Element --> <h4>Text + Path Element</h4>
+
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:400px" >
+
+    <!-- to hide the path, it is usually wrapped in a <defs> element -->
+  <!-- <defs> -->
+    <path id="MyPath" fill="pink" stroke="white"  d="M0,50 A50,20 0,0,1  95,50" ></path>
+  <!-- </defs> -->
+  <text>
+    <textPath href="#MyPath" fill="red">Angular Minds </textPath>
+  </text>
+</svg>
+
+<!-- * Text + Path Element --> <b>LOGO</b>
+
+<svg viewBox="0 0 100 100" class="border" style="height: 300px; width:400px" >
+    <line x1="10" y1="50" x2="80" y2="50" stroke="pink"></line>
+    <path d="M0,30 L10,50 45,50 Q30,35 15,32  z" stroke="red" fill="red"></path>
+</svg>
