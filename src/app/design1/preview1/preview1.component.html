@@ -1,13 +1,13 @@
 <div class="row mb-2">
   <div class="col-md-4 "></div>
   <div class="col-md-4 text-center "><b class="fs-3"> </b></div>
-  <div class="col-md-4 text-center " > <button class="btn btn-warning" (click)="generatePDF()" >Print</button> </div>
+  <div class="col-md-4 text-center " id="printBTN" > <button class="btn btn-warning" (click)="generatePDF()" >Print</button> </div>
 </div>
-<div class="container  border border-dark border-3">
+<div class="container border border-dark border-3" id="removeContainer">
   <form id="formPdf"  [formGroup]="resumeForm">
-    <div class="m-2">
+    <div class="m-2 ">
       <!-- ? Heading -->
-        <div class="row fentBlue">
+        <div class="row fentBlue addMargin marginX">
          <div class="text-center mt-2"><b>RESUME</b></div>
           <div class="col-md-8 ms-3 mt-1 mb-2" >
             <b class="fs-3 bold">{{resumeForm.get('gender')?.value}}. {{resumeForm?.get('fullName')?.value}}</b>
@@ -30,7 +30,7 @@
         </div>
          <!-- ? Heading -->
                <!-- ? LH/RH Border = ABOUT ME -->
-        <div class="row my-2 borderLeft-Right ">
+        <div class="row my-2 borderLeft-Right addMargin">
           <div class="col-md-9 mt-2 ">
             <div class="border-bottom border-2 pb-1  border-secondary">
               <b class="my-2">ABOUT ME</b>
@@ -181,9 +181,12 @@
                                     
                                           </div>
                                           
-                                          <div class="text-center col-md-6">
-                                            <div class="border border-dark ms-5" style="height: 100px; width: 100px;">
-                                              <img src="{{resumeForm.get('projects')?.value[i]?.QRCode}}" height="100" width="100" class="img-fluid" alt="QR Code">
+                                          <div class="text-start col-md-6">
+                                            <i>( Scan & Check my Project. )</i>
+                                            <div class=" ms-5" style="height: 100px; width: 100px;">
+                                              
+                                              <!-- <img src="{{resumeForm.get('projects')?.value[i]?.QRCode}}" height="100" width="100" class="img-fluid" alt="QR Code"> -->
+                                              <qrcode [qrdata]="resumeForm.get('projects')?.value[i]?.QRCode" [width]="120" [errorCorrectionLevel]="'M'"></qrcode>
                                               </div>
                                           </div>
                                         </div>
@@ -255,7 +258,7 @@
         </div>
         <!-- ^ Work Experience -->
                                <!-- * Hobbies's Details -->
-          <div class="row  pb-3 bg-primary text-white">
+          <div class="row  pb-3 bg-primary text-white addMargin marginX">
 <!-- ? Hobby-1 -->
             <div class="col-md-4 mt-2">
               <div class="border-bottom border-2 pb-1  border-white">

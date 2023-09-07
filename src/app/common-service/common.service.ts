@@ -193,14 +193,18 @@ export class CommonService {
 
   addQRCodeHere(i:number, event:any)
   {
-    let reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (e:any)=>{
-   this.projects.at(i).patchValue({
-    QRCode: e.target.result
-   });
+  //   let reader = new FileReader();
+  //   reader.readAsDataURL(event.target.files[0]);
+  //   reader.onload = (e:any)=>{
+  //  this.projects.at(i).patchValue({
+  //   QRCode: e.target.result
+  //  });
       
-    }
+  //   }
+// console.log(event.target.value);
+  this.projects.at(i).patchValue({
+      QRCode: event.target.value
+     });
     return this.resumeForm;
   }
 

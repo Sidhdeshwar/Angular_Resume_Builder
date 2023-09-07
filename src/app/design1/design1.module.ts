@@ -5,6 +5,7 @@ import { Design1RoutingModule } from './design1-routing.module';
 import { Design1Component } from './design1.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Preview1Component } from './preview1/preview1.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { Preview1Component } from './preview1/preview1.component';
     CommonModule,
     Design1RoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    QRCodeModule
   ]
 })
 export class Design1Module { }

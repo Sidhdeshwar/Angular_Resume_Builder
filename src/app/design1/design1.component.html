@@ -234,11 +234,16 @@
                                         <label for="floatingInput">Used Tools</label> 
                                       </div>
                                       </div>
-                                      <div class="text-start" *ngIf="resumeForm.get('projects')?.value[i]?.QRCode"> 
-                                        <input type="file" placeholder="Upload QR Code" (change)="addQRCode(i,$event)">
+                                      <div class="text-start w-75" *ngIf="resumeForm.get('projects')?.value[i]?.QRCode"> 
+                                        <div class="form-floating mb-3">
+                                          <input type="text" class="form-control form-control-sm w-75 text-primary" (change)="addQRCode(i,$event)">
+                                          <label for="floatingInput"><i>Paste Project URL Here...</i></label>                                        
+                                      </div>
+                                        <!-- <input type="text" placeholder="Project URL Paste Here" class="w-100" (change)="addQRCode(i,$event)"> -->
                                         <div class="d-flex">
-                                          <div> <div class="border border-dark mt-2" style="height: 100px; width: 100px;">
-                                          <img src="{{resumeForm.get('projects')?.value[i]?.QRCode}}" height="100" width="100" class="img-fluid" alt="QR Code">
+                                          <div> <div class="mb-2" style="height: 100px; width: 100px;">
+                                          <!-- <img src="{{resumeForm.get('projects')?.value[i]?.QRCode}}" height="100" width="100" class="img-fluid" alt="QR Code"> -->
+                                          <qrcode [qrdata]="resumeForm.get('projects')?.value[i]?.QRCode" [width]="120" [errorCorrectionLevel]="'M'"></qrcode>
                                           </div></div>
                                           <div class="ms-5">
                                             <b (click)="removeQR(i)">

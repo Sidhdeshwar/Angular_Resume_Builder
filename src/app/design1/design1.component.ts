@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 // import * as pdfmake from 'pdfmake/build/pdfmake';
@@ -13,13 +13,16 @@ import { Router } from '@angular/router';
   templateUrl: './design1.component.html',
   styleUrls: ['./design1.component.css']
 })
-export class Design1Component {
+export class Design1Component implements OnDestroy {
 
   resumeForm!:FormGroup;
   addBigDetails:string = '';
   constructor(private formBuilder:FormBuilder, private commonService:CommonService, private router:Router)
   {
        this.resumeForm =  this.commonService.callFirstForResumeForm();
+  }
+  ngOnDestroy(): void {
+   
   }
   // ^ PHOTO
 PHOTO_ID:any
