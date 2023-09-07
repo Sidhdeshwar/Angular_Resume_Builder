@@ -36,7 +36,7 @@
                  <div class="col-md-4"></div>
                  <div class="col-md-4 ">
                   <div class=" border border-dark rounded-0" style="height: 110px; width: 110px;">
-                    <img src="{{resumeForm.get('photoID')?.value}}" class="card-img-top img-thumbnail" height="250" width="170" alt="Photo-ID">
+                    <img src="{{resumeForm.get('photoID')?.value}}" class="img-fluid" height="250" width="170" alt="Photo-ID">
                   </div>
                   <input type="file" class="form-control form-control-sm mt-2 ms-2"  (change)="uploadPhoto($event)">
                 </div>
@@ -223,14 +223,36 @@
                                   <div class=" mb-3" *ngFor="let o of projects?.controls ; let i=index" [formGroupName]="i">
                                     <div class="d-flex ">
                                       <div class="w-100">
+                                     <div class="d-flex w-100">
+                                      <div class="w-100">
                                         <div class="form-floating mb-3">
                                           <input type="email" class="form-control form-control-sm m-2 w-50" id="floatingInput" [placeholder]="'Project Name'" formControlName="projectTitle">
-                                            <label for="floatingInput">Project Name - [{{i+1}}]</label>
+                                          <label for="floatingInput"><b><i>Project Name - [{{i+1}}]</i></b></label>                                        
+                                      </div>
+                                      <div class="form-floating mb-3">
+                                        <input type="text" class="form-control form-control-sm m-2 w-25" id="floatingInput" [placeholder]="'Used Tools'" formControlName="usedTools">
+                                        <label for="floatingInput">Used Tools</label> 
+                                      </div>
+                                      </div>
+                                      <div class="text-start" *ngIf="resumeForm.get('projects')?.value[i]?.QRCode"> 
+                                        <input type="file" placeholder="Upload QR Code" (change)="addQRCode(i,$event)">
+                                        <div class="d-flex">
+                                          <div> <div class="border border-dark mt-2" style="height: 100px; width: 100px;">
+                                          <img src="{{resumeForm.get('projects')?.value[i]?.QRCode}}" height="100" width="100" class="img-fluid" alt="QR Code">
+                                          </div></div>
+                                          <div class="ms-5">
+                                            <b (click)="removeQR(i)">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                              </svg>
+                                            </b>
                                           </div>
-                                          <div class="form-floating mb-3">
-                                            <input type="text" class="form-control form-control-sm m-2 w-25" id="floatingInput" [placeholder]="'Used Tools'" formControlName="usedTools">
-                                            <label for="floatingInput">Used Tools</label>
-                                          </div>
+                                        </div>
+                                       
+                                
+                                      </div>
+                                     </div>
                                           <div class="form-floating ms-2">
                                             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" placeholder="Enter Project Description" formControlName="projectDescription"></textarea>
                                             <label for="floatingTextarea">Enter Project Description</label>

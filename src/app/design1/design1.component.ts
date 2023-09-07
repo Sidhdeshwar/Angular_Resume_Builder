@@ -81,6 +81,16 @@ PHOTO_ID:any
     }
   }
 
+  removeQR(i:number)
+  {
+   this.resumeForm =  this.commonService.removeQRCode(i);
+  }
+
+  addQRCode(i:number, event:any)
+  {
+     this.resumeForm = this.commonService.addQRCodeHere(i,event);
+  }
+
   // ^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Work Experience ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   get experience()
   {

@@ -20,8 +20,8 @@
           <div class="row col-md-4 text-center  my-2">
                  <div class="col-md-4"></div>
                  <div class="col-md-4 ">
-                  <div class=" border border-dark rounded-0" style="height: 110px; width: 110px;">
-                    <img src="{{resumeForm.get('photoID')?.value}}" class="card-img-top img-thumbnail" height="250" width="170" alt="Photo-ID">
+                  <div class=" rounded-0" style="height: 110px; width: 110px;">
+                    <img src="{{resumeForm.get('photoID')?.value}}" class="img-fluid" height="250" width="170" alt="Photo-ID">
                   </div>
 
                 </div>
@@ -166,12 +166,27 @@
                                   <div class="mb-0" *ngFor="let o of projects?.controls ; let i=index" [formGroupName]="i">
                                     <div class="d-flex ">
                                       <div class="w-100 ms-3">
-                                        <div class="form-floating ">
-                                          <b >{{resumeForm.get('projects')?.value[i].projectTitle}}</b>
-                                        </div>
-                                          <div class="form-floating">
-                                            <i >{{resumeForm.get('projects')?.value[i].usedTools}}</i>
+                                    
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <div class="form-floating ">
+                                              <b >{{resumeForm.get('projects')?.value[i].projectTitle}}</b>
+                                            </div>
+                                              <div class="form-floating">
+                                                <i >{{resumeForm.get('projects')?.value[i].usedTools}}</i>
+                                              </div>
+                                              <div><i class="bg-light">( Scan & check the project.)</i></div>
+                                              <b>Details : </b>
+
+                                    
                                           </div>
+                                          
+                                          <div class="text-center col-md-6">
+                                            <div class="border border-dark ms-5" style="height: 100px; width: 100px;">
+                                              <img src="{{resumeForm.get('projects')?.value[i]?.QRCode}}" height="100" width="100" class="img-fluid" alt="QR Code">
+                                              </div>
+                                          </div>
+                                        </div>
                                           <div class="form-floating">
                                             <p >{{resumeForm.get('projects')?.value[i].projectDescription}}</p>
                                           </div>

@@ -20,7 +20,7 @@ export class CommonService {
     this.resumeForm = this.formBuilder.group({
       gender: ['Mr/Ms'],
       fullName : [''],
-      degree : this.formBuilder.array([ new FormControl('') ]),
+      degree : this.formBuilder.array([ new FormControl('X') ]),
       photoID: [''],
       aboutMe : [''],
       phoneNumber : ['', Validators.maxLength(10)],
@@ -73,7 +73,8 @@ export class CommonService {
         this.formBuilder.group({
           projectTitle: [''],
           usedTools:[''],
-          projectDescription:['']
+          projectDescription:[''],
+          QRCode: ['QR']
         }),
       ]),
       experience: this.formBuilder.array([
@@ -91,13 +92,14 @@ export class CommonService {
   }
 
   // ^ PHOTO
-PHOTO_ID:any
+// PHOTO_ID:any
   uploadPhoto(event:any)
   {
      let reader = new FileReader();
      reader.readAsDataURL(event.target.files[0]);
      reader.onload = (e:any)=>{
-        this.PHOTO_ID = e.target.result;
+        // this.PHOTO_ID = e.target.result;
+        
         this.resumeForm.patchValue({
           photoID: e.target.result
         })
@@ -164,7 +166,8 @@ PHOTO_ID:any
      let newProject = this.formBuilder.group({
       projectTitle: [''],
       usedTools:[''],
-      projectDescription:['']
+      projectDescription:[''],
+      QRCode:['QR']
     });
    this.projects.push(newProject);
    return this.resumeForm;
@@ -178,6 +181,27 @@ PHOTO_ID:any
        this.resumeForm.removeControl('projects');
        console.log("REm Control : ", this.resumeForm.value);
     }
+  }
+
+  removeQRCode(i:number)
+  {
+    console.log(delete this.projects.value[i].QRCode)
+    console.log(this.projects.value[i-1]);
+    
+    return this.resumeForm;
+  }
+
+  addQRCodeHere(i:number, event:any)
+  {
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (e:any)=>{
+   this.projects.at(i).patchValue({
+    QRCode: e.target.result
+   });
+      
+    }
+    return this.resumeForm;
   }
 
   // ^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Work Experience ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

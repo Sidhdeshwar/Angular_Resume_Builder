@@ -14,6 +14,7 @@ import * as pdfMake from 'pdfmake/build/pdfmake';
 export class Preview1Component  {
 
   resumeForm!: FormGroup;
+  
   constructor(public commonService: CommonService)
   {
     this.resumeForm = commonService.resumeForm;
